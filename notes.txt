@@ -1,0 +1,16 @@
+cd server
+node currentWeather
+
+then 
+
+npm run dev
+
+then
+
+cd ..
+cd client
+
+then
+
+npm start
+
