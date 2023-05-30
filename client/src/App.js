@@ -6,7 +6,7 @@ function ConvertTemp(Temperature, TempType) {
       var Temperature = (Temperature - 32) * 5/9; //convert from Farenheit to Celsius
       var TempType = 0; //0 = Celsius
   }
-
+}
 function App() {
   const [backendData, setBackendData] = useState({});
   const [zipCode, setZipCode] = useState('');
