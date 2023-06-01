@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //function requires Temp and Temp Type (1 = Farenheit else Celsius) converts temp from Farenheit to Celsius and vice versa
 function ConvertTemp(Temperature, TempType) {
@@ -7,21 +7,41 @@ function ConvertTemp(Temperature, TempType) {
       var TempType = 0; //0 = Celsius
   }
 }
+
+function validateZipCode(zipCode) {
+  // Regular expression pattern to validate ZIP code
+  const zipCodePattern = /^\d{4}$/;
+  return zipCodePattern.test(zipCode);
+}
+
 function App() {
   const [backendData, setBackendData] = useState({});
   const [zipCode, setZipCode] = useState('');
+  const [invalidZipCode, setInvalidZipCode] = useState(false);
 
   useEffect(() => {
-    fetch(`/api?zip=${zipCode}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setBackendData(data);
-      });
-  }, [zipCode]);
+    if (invalidZipCode) {
+      // Reset backendData if the ZIP code is invalid
+      setBackendData({});
+    } else {
+      fetch(`/api?zip=${zipCode}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setBackendData(data);
+        });
+    }
+  }, [zipCode, invalidZipCode]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    setZipCode(event.target.elements.zipCode.value);
+    const inputZipCode = event.target.elements.zipCode.value;
+    const isValidZipCode = validateZipCode(inputZipCode);
+    setInvalidZipCode(!isValidZipCode);
+    if (isValidZipCode) {
+      setZipCode(inputZipCode);
+    } else {
+      setBackendData({});
+    }
   };
 
   return (
@@ -30,7 +50,9 @@ function App() {
         <input type="text" name="zipCode" placeholder="Enter ZIP code" />
         <button type="submit">Submit</button>
       </form>
-      {typeof backendData.weather === 'undefined' ? (
+      {invalidZipCode ? (
+        <p>Please enter a valid ZIP code.</p>
+      ) : typeof backendData.weather === 'undefined' ? (
         <p>Loading...</p>
       ) : (
         <div>
