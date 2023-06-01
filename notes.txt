@@ -1,16 +1,9 @@
-cd server
-node currentWeather
-
-then 
-
+// to run server
+cd server 
 npm run dev
 
-then
-
+// to run client
 cd ..
 cd client
-
-then
-
 npm start
 
