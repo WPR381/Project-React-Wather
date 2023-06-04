@@ -1,3 +1,66 @@
+form{
+
+    width: 25%;
+
+}
+
+form input{
+
+    width: 50%;
+
+    height: 30px;
+
+    font-size: larger;
+
+    margin: 10px 0px 10px 30px;
+
+    border: 3px solid white;
+    background-color: rgb(23, 59, 126);
+    border-radius: 7px;
+}
+
+form button{
+
+    color: white;
+
+    height: 30px;
+
+    margin: 10px 35px;
+
+    background-color: rgb(23, 59, 126);
+
+    border: 3px solid white;
+
+    border-radius: 7px;
+
+    font-weight: 700;
+
+    font-size: large;
+
+}
+body{
+
+    background-color: rgb(42, 103, 216);
+
+    color: white;
+
+}
+
+h1{
+
+    font-size: 100px;
+
+    margin-top: 20%;
+
+    margin-bottom: 0;
+
+}
+
+h2{
+
+    margin-bottom: 75px;
+
+}
 .container {
     display: flex;
     flex-direction: column;
@@ -18,11 +81,27 @@
   
   .weather-info {
 
-    padding: 10px;
+   
+   
+    
+    margin: 20px;
+
+    width: 20%;
+
+   text-align: center;
     
   }
+  .box{
+    padding: 10px;
+    border-top: 4px solid white;
+    border-bottom: 4px solid white;
+    border-radius: 8px;
+  }
+
+  
   .weather-info p {
-    margin: 0px ;
+    font-size: x-large;
+    margin: 10px;
   }
   
   .weather-info p:first-child {
@@ -30,35 +109,38 @@
   }
   
   .weather-info p:nth-child(2) {
-    color: #337ab7;
+    color: white;
   }
   
   .weather-info p:nth-child(3) {
-    color: #666;
+    color: white;
   }
   
   .weather-info p:nth-child(4) {
-    color: #999;
+   color: white;
   }
  .icon
  {
-    font-size: 5em;
-    margin-bottom: -10rem;
+    font-size: 10em;
+    margin-bottom: -5rem;
     display: inline-block;
+ 
  }
  .icon-name
  {
-    margin-top: -10rem; 
+    font-size: 100px;
     font-size: 1rem;
+    font-weight:750;
+    font-size: 25px;
  }
  .temp
  {
     border: 0cm;
-    background-color: white;
+    background-color: rgb(42, 103, 216);
     padding: 0%;
+    color: white;
+    font-weight:100;
+    font-size: 25px;
+ }
 
- }
- .temp :hover
- {
-    background-color: #666;
- }
+ 

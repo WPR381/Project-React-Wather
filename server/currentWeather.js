@@ -6,12 +6,14 @@ async function getWeather(userZip) {
     if (userZip.length == 4) {
       try {
         const response = await axios.get(url);
-        const weatherData = response.data.weather[0].description;
+        const weatherDescription= response.data.weather[0].description;
+        const weatherData = response.data.weather[0].main;
         const temperature = (response.data.main.temp - 273.15).toFixed(2);
         const humidity = response.data.main.humidity;
         const windSpeed = response.data.wind.speed;
   
         return {
+          description:weatherDescription,
           weather: weatherData,
           temp: temperature,
           wind: windSpeed,
@@ -31,7 +33,7 @@ async function getWeather(userZip) {
     
     const weatherValues = await getWeather(userZip);
     if (weatherValues) {
-      const [weatherData, temperature, humidity, windSpeed] = weatherValues;
+      const [weatherDescription, weatherData, temperature, humidity, windSpeed] = weatherValues;
       console.log('Weather:', weatherData);
       console.log('Temperature:', temperature);
       console.log('Humidity:', humidity);

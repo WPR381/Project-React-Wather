@@ -6,7 +6,7 @@ import { FaTemperatureHigh, FaWind, FaTint } from 'react-icons/fa';
 
 function getWeatherIcon(condition) {
   switch (condition) {
-    case 'clear sky':
+    case 'Clear':
       return <WiDaySunny />;
     case 'Clouds':
       return <WiCloud />;
@@ -30,6 +30,7 @@ function getWeatherIcon(condition) {
       return <WiCloud />;
   }
 }
+
 
 function validateZipCode(zipCode) {
   // Regular expression pattern to validate ZIP code
@@ -83,25 +84,29 @@ function App() {
   return (
     <div class='container'>
       <h1>Weather Forecast</h1>
-      <h2>Enter a zip below to get the current weather conditions for that zip location.</h2>
-      <form onSubmit={handleFormSubmit}>
-        <input type="text" name="zipCode" placeholder="Enter ZIP code" />
-        <button type="submit">Submit</button>
-      </form>
+      
       {invalidZipCode ? (
         <p>Please enter a valid ZIP code.</p>
       ) : typeof backendData.weather === 'undefined' ? (
         <p>Loading...</p>
       ) : (
         <div className='weather-info'>
+
           <div className='icon'>{getWeatherIcon(backendData.weather)}</div>
-          <p class='icon-name'>{backendData.weather}</p>
+          <p class='icon-name'>{backendData.description}</p>
+          <div className='box'>
           <button className='temp' onClick={toggleTemperatureUnit}>Temperature: <FaTemperatureHigh /> {getTemperature(backendData.temp)}</button>
-          <p>Wind: <FaWind /> {backendData.wind}</p>
-          <p>Humidity: <FaTint /> {backendData.humidity}</p>
+          <p>Wind: <FaWind /> {backendData.wind} m/s</p>
+          <p>Humidity: <FaTint /> {backendData.humidity} g.m-3</p>
           
         </div>
+        </div>
       )}
+      <h2>Enter a zip below to get the current weather conditions for that zip location.</h2>
+      <form onSubmit={handleFormSubmit}>
+        <input type="text" name="zipCode" placeholder="Enter ZIP code" />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }
