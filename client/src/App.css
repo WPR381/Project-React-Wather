@@ -43,5 +43,11 @@
  .icon
  {
     font-size: 5em;
-    margin: auto;
+    margin-bottom: -10rem;
+    display: inline-block;
+ }
+ .icon-name
+ {
+    margin-top: -10rem; 
+    font-size: 1rem;
  }

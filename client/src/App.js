@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { WiDaySunny, WiCloud, WiRain, WiSnow, WiThunderstorm, WiFog } from 'react-icons/wi';
-
+import { FaTemperatureHigh, FaWind, FaTint } from 'react-icons/fa';
 
 
 function getWeatherIcon(condition) {
@@ -91,11 +91,10 @@ function App() {
       ) : (
         <div className='weather-info'>
         <div className='icon'>{getWeatherIcon(backendData.weather)}</div> 
-        <p>{backendData.weather}</p>
-
-          <p>Temperature: {backendData.temp}</p>
-          <p>Wind: {backendData.wind}</p>
-          <p>Humidity: {backendData.humidity}</p>
+        <p class='icon-name'>{backendData.weather}</p>
+          <p> Temperature: <FaTemperatureHigh /> {backendData.temp}°C</p>
+          <p>Wind: <FaWind /> {backendData.wind}</p>
+          <p> Humidity: <FaTint />{backendData.humidity}</p>
         </div>
       )}
     </div>
