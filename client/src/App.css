@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  
+  }
+  
+  .search-form {
+    display: flex;
+   
+  }
+  
+  .search-form input[type="text"] {
+    margin-right: 10px;
+  }
+  
+  .weather-info {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+  }
+  .weather-info p {
+    margin: 10px 0;
+  }
+  
+  .weather-info p:first-child {
+    font-weight: bold;
+  }
+  
+  .weather-info p:nth-child(2) {
+    color: #337ab7;
+  }
+  
+  .weather-info p:nth-child(3) {
+    color: #666;
+  }
+  
+  .weather-info p:nth-child(4) {
+    color: #999;
+  }

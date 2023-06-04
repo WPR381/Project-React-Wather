@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css';
 
 //function requires Temp and Temp Type (1 = Farenheit else Celsius) converts temp from Farenheit to Celsius and vice versa
 function ConvertTemp(Temperature, TempType) {
@@ -44,8 +45,12 @@ function App() {
     }
   };
 
+
+
   return (
-    <div>
+    <div class='container'>
+      <h1>Weather Forecast</h1>
+      <h2>Enter a zip below to get the current weather conditions for that zip location.</h2>
       <form onSubmit={handleFormSubmit}>
         <input type="text" name="zipCode" placeholder="Enter ZIP code" />
         <button type="submit">Submit</button>
@@ -55,7 +60,7 @@ function App() {
       ) : typeof backendData.weather === 'undefined' ? (
         <p>Loading...</p>
       ) : (
-        <div>
+        <div className='weather-info'>
           <p>Weather: {backendData.weather}</p>
           <p>Temperature: {backendData.temp}</p>
           <p>Wind: {backendData.wind}</p>
