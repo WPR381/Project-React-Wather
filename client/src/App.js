@@ -1,6 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { WiDaySunny, WiCloud, WiRain, WiSnow, WiThunderstorm, WiFog } from 'react-icons/wi';
 
+
+
+function getWeatherIcon(condition) {
+  switch (condition) {
+    case 'clear sky':
+      return <WiDaySunny />;
+    case 'Clouds':
+      return <WiCloud />;
+    case 'Rain':
+      return <WiRain />;
+    case 'Snow':
+      return <WiSnow />;
+    case 'Thunderstorm':
+      return <WiThunderstorm />;
+    case 'Mist':
+    case 'Smoke':
+    case 'Haze':
+    case 'Dust':
+    case 'Fog':
+    case 'Sand':
+    case 'Ash':
+    case 'Squall':
+    case 'Tornado':
+      return <WiFog />;
+    default:
+      return <WiCloud />;
+  }
+}
 //function requires Temp and Temp Type (1 = Farenheit else Celsius) converts temp from Farenheit to Celsius and vice versa
 //function ConvertTemp(Temperature, TempType) {
 //  if (TempType = 1){
@@ -61,7 +90,9 @@ function App() {
         <p>Loading...</p>
       ) : (
         <div className='weather-info'>
-          <p>Weather: {backendData.weather}</p>
+        <div className='icon'>{getWeatherIcon(backendData.weather)}</div> 
+        <p>{backendData.weather}</p>
+
           <p>Temperature: {backendData.temp}</p>
           <p>Wind: {backendData.wind}</p>
           <p>Humidity: {backendData.humidity}</p>
