@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 //function requires Temp and Temp Type (1 = Farenheit else Celsius) converts temp from Farenheit to Celsius and vice versa
-function ConvertTemp(Temperature, TempType) {
-  if (TempType = 1){
-      var Temperature = (Temperature - 32) * 5/9; //convert from Farenheit to Celsius
-      var TempType = 0; //0 = Celsius
-  }
-}
+//function ConvertTemp(Temperature, TempType) {
+//  if (TempType = 1){
+//      var Temperature = (Temperature - 32) * 5/9; //convert from Farenheit to Celsius
+ //     var TempType = 0; //0 = Celsius
+ // }
+//}
 
 function validateZipCode(zipCode) {
   // Regular expression pattern to validate ZIP code
