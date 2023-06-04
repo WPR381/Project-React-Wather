@@ -3,7 +3,7 @@ import './App.css';
 import { WiDaySunny, WiCloud, WiRain, WiSnow, WiThunderstorm, WiFog } from 'react-icons/wi';
 import { FaTemperatureHigh, FaWind, FaTint } from 'react-icons/fa';
 
-
+// decide which icon to display
 function getWeatherIcon(condition) {
   switch (condition) {
     case 'Clear':
@@ -31,12 +31,13 @@ function getWeatherIcon(condition) {
   }
 }
 
-
+// validation for zip code
 function validateZipCode(zipCode) {
   // Regular expression pattern to validate ZIP code
   const zipCodePattern = /^\d{4}$/;
   return zipCodePattern.test(zipCode);
 }
+
 
 function App() {
   const [backendData, setBackendData] = useState({});
@@ -91,7 +92,6 @@ function App() {
         <p>Loading...</p>
       ) : (
         <div className='weather-info'>
-
           <div className='icon'>{getWeatherIcon(backendData.weather)}</div>
           <p class='icon-name'>{backendData.description}</p>
           <div className='box'>
@@ -102,7 +102,7 @@ function App() {
         </div>
         </div>
       )}
-      <h2>Enter a zip below to get the current weather conditions for that zip location.</h2>
+      <h2>Enter a ZA zip code below to get the current weather conditions for that zip location.</h2>
       <form onSubmit={handleFormSubmit}>
         <input type="text" name="zipCode" placeholder="Enter ZIP code" />
         <button type="submit">Submit</button>

@@ -29,21 +29,9 @@ async function getWeather(userZip) {
     }
   }
 
-  async function main(userZip) {
-    
-    const weatherValues = await getWeather(userZip);
-    if (weatherValues) {
-      const [weatherDescription, weatherData, temperature, humidity, windSpeed] = weatherValues;
-      console.log('Weather:', weatherData);
-      console.log('Temperature:', temperature);
-      console.log('Humidity:', humidity);
-      console.log('Wind Speed:', windSpeed);
-    }
-  }
-  
   //main(userZip);
   module.exports=
 {
     getWeather,
-    main
+    
 }
