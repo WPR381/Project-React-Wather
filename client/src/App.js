@@ -30,13 +30,6 @@ function getWeatherIcon(condition) {
       return <WiCloud />;
   }
 }
-//function requires Temp and Temp Type (1 = Farenheit else Celsius) converts temp from Farenheit to Celsius and vice versa
-//function ConvertTemp(Temperature, TempType) {
-//  if (TempType = 1){
-//      var Temperature = (Temperature - 32) * 5/9; //convert from Farenheit to Celsius
- //     var TempType = 0; //0 = Celsius
- // }
-//}
 
 function validateZipCode(zipCode) {
   // Regular expression pattern to validate ZIP code
@@ -48,6 +41,7 @@ function App() {
   const [backendData, setBackendData] = useState({});
   const [zipCode, setZipCode] = useState('');
   const [invalidZipCode, setInvalidZipCode] = useState(false);
+  const [temperatureUnit, setTemperatureUnit] = useState('C'); // Default to Celsius
 
   useEffect(() => {
     if (invalidZipCode) {
@@ -74,7 +68,17 @@ function App() {
     }
   };
 
+  const toggleTemperatureUnit = () => {
+    setTemperatureUnit((prevUnit) => (prevUnit === 'C' ? 'F' : 'C'));
+  };
 
+  // Convert temperature to the selected unit
+  const getTemperature = (temp) => {
+    if (temperatureUnit === 'F') {
+      return Math.round((temp * 9) / 5 + 32) + '°F';
+    }
+    return temp + '°C';
+  };
 
   return (
     <div class='container'>
@@ -90,11 +94,12 @@ function App() {
         <p>Loading...</p>
       ) : (
         <div className='weather-info'>
-        <div className='icon'>{getWeatherIcon(backendData.weather)}</div> 
-        <p class='icon-name'>{backendData.weather}</p>
-          <p> Temperature: <FaTemperatureHigh /> {backendData.temp}°C</p>
+          <div className='icon'>{getWeatherIcon(backendData.weather)}</div>
+          <p class='icon-name'>{backendData.weather}</p>
+          <button className='temp' onClick={toggleTemperatureUnit}>Temperature: <FaTemperatureHigh /> {getTemperature(backendData.temp)}</button>
           <p>Wind: <FaWind /> {backendData.wind}</p>
-          <p> Humidity: <FaTint />{backendData.humidity}</p>
+          <p>Humidity: <FaTint /> {backendData.humidity}</p>
+          
         </div>
       )}
     </div>

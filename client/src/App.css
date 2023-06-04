@@ -51,3 +51,14 @@
     margin-top: -10rem; 
     font-size: 1rem;
  }
+ .temp
+ {
+    border: 0cm;
+    background-color: white;
+    padding: 0%;
+
+ }
+ .temp :hover
+ {
+    background-color: #666;
+ }
